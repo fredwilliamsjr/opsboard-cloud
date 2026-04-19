@@ -13,6 +13,15 @@ This project demonstrates the following engineering concepts:
 - Scalable cloud-ready backend structure
 
 ---
+## 🏗️ Architecture
+
+- Controller Layer → Handles HTTP requests
+- Service Layer → Business logic (ServiceManager)
+- Data Layer → Entity Framework Core (AppDbContext)
+- Database → PostgreSQL (planned)
+
+Follows clean architecture principles for scalability and maintainability.
+---
 
 ## Tech Stack
 - ASP.NET Core Web API
@@ -56,5 +65,4 @@ dotnet run
 
 4. Open Swagger in browser
 
-```bash
 https://localhost:7045/swagger/index.html
