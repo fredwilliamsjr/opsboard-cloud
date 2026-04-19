@@ -13,7 +13,7 @@ This project demonstrates the following engineering concepts:
 - Scalable cloud-ready backend structure
 
 ---
-## 🏗️ Architecture
+## Architecture
 
 - Controller Layer → Handles HTTP requests
 - Service Layer → Business logic (ServiceManager)
