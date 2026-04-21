@@ -5,7 +5,7 @@ A production-style cloud platform for incident management, deployment tracking, 
 ## Overview
 OpsBoard Cloud is a real-world SaaS-style backend system designed to simulate internal tools used by engineering teams.
 
-## 🛠 Tech Stack
+## Tech Stack
 - ASP.NET Core Web API
 - Entity Framework Core
 - PostgreSQL (planned)
@@ -14,7 +14,7 @@ OpsBoard Cloud is a real-world SaaS-style backend system designed to simulate in
 - Terraform (planned)
 - GitHub Actions (planned)
 
-## 📦 Features (In Progress)
+## Features (In Progress)
 - User authentication (JWT)
 - Service registry
 - Incident tracking system

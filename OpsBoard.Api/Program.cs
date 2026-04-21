@@ -1,5 +1,6 @@
 
 using Microsoft.EntityFrameworkCore;
+using OpsBoard.Api.Services;
 
 namespace OpsBoard.Api
 {
@@ -16,11 +17,14 @@ namespace OpsBoard.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddDbContext<Data.AppDBContext>(options =>
+            builder.Services.AddDbContext<Data.AppDbContext>(options =>
               options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            var app = builder.Build();
+            builder.Services.AddScoped<OpsBoard.Api.Services.IServiceManager, OpsBoard.Api.Services.ServiceManager>();
+            builder.Services.AddScoped<IIncidentManager, IncidentManager>();
 
+            var app = builder.Build();
+            
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -36,6 +40,7 @@ namespace OpsBoard.Api
             app.MapControllers();
 
             app.Run();
+
         }
     }
 }
