@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OpsBoard.Api.Data;
 using OpsBoard.Api.DTOs;
 using OpsBoard.Api.Entities;
@@ -14,10 +15,18 @@ namespace OpsBoard.Api.Services
             _context = context;
         }
 
-        public async Task<List<Incident>> GetAllAsync()
+        public async Task<List<Incident>> GetAllAsync(string? status = null)
         {
-            return await _context.Incidents
+            var query = _context.Incidents
                 .Include(i => i.ServiceItem)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(status))
+            {
+                query = query.Where(i => i.Status == status);
+            }
+
+            return await query
                 .OrderByDescending(i => i.CreatedAt)
                 .ToListAsync();
         }
@@ -85,5 +94,7 @@ namespace OpsBoard.Api.Services
             await _context.SaveChangesAsync();
             return true;
         }
+
+        
     }
 }

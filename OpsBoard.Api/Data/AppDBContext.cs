@@ -11,6 +11,7 @@ namespace OpsBoard.Api.Data
 
         public DbSet<ServiceItem> Services => Set<ServiceItem>();
         public DbSet<Incident> Incidents => Set<Incident>();
+        public DbSet<User> Users => Set<User>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Incident>()

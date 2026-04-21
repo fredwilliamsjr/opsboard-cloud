@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OpsBoard.Api.DTOs;
 using OpsBoard.Api.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OpsBoard.Api.Controllers
 {
@@ -16,12 +17,18 @@ namespace OpsBoard.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(string? status)
         {
-            var incidents = await _incidentManager.GetAllAsync();
-            return Ok(incidents);
-        }
+            var incidents = await _incidentManager.GetAllAsync(status);
 
+            return Ok(new
+            {
+                success = true,
+                count = incidents.Count,
+                data = incidents
+            });
+        }
+        
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {

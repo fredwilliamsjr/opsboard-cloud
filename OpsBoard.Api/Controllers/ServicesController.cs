@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using OpsBoard.Api.Data;
 using OpsBoard.Api.Entities;
 using OpsBoard.Api.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OpsBoard.Api.Controllers
 {
